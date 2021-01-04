@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const morgan = require('morgain');
+const morgan = require('morgan');
 
 const apiRoutes = require('./routes/apiRoutes');
 const htmlRoutes = require('./routes/htmlRoutes');
@@ -14,8 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.use(htmlRoutes);
-app.use(apiRoutes);
+// app.use(htmlRoutes);
+// app.use(apiRoutes);
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://workout', {
     useNewUrlParser: true,
