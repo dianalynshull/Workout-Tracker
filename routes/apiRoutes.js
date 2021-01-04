@@ -32,6 +32,18 @@ router.get('/range', async (req, res) => {
     }
 });
 
-//  /workouts/(workout)
+//  /workouts/:id
+router.put('/:id', async (req, res) => {
+    try {
+        let savedWorkouts = [];
+        const previousWorkout = await Workout.findById(req.params.id);
+        savedWorkouts = previousWorkout.exercises;
+        let allExercises = [...savedWorkouts, req.body];
+        res.json(allExercises);
+        await Workout.findByIdAndUpdate(req.params.id, { exercises: allExercises });
+    } catch (err) {
+        res.json(err);
+    }
+})
 
 module.exports = router;
