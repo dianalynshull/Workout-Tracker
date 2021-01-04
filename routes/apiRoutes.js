@@ -23,6 +23,14 @@ router.post('/', async (req, res) => {
 });
 
 // /workouts/range GET
+router.get('/range', async (req, res) => {
+    try {
+        const result = await Workout.find({});
+        res.json(result);
+    } catch (err) {
+        res.json(err);
+    }
+});
 
 //  /workouts/(workout)
 
