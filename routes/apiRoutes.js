@@ -10,9 +10,17 @@ router.get('/', async (req, res) => {
     } catch (err) {
         res.json(err);
     }
-})
+});
 
 // /workouts POST
+router.post('/', async (req, res) => {
+    try {
+        const result = await Workout.create(req.body);
+        res.json(result);
+    } catch(err) {
+        res.json(err);
+    }
+});
 
 // /workouts/range GET
 
